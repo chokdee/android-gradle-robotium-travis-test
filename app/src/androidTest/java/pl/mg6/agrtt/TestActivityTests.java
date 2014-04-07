@@ -1,6 +1,7 @@
 package pl.mg6.agrtt;
 
 import android.test.ActivityInstrumentationTestCase2;
+import android.widget.EditText;
 
 import com.robotium.solo.Solo;
 
@@ -13,8 +14,8 @@ public class TestActivityTests extends ActivityInstrumentationTestCase2<TestActi
     }
 
     public void testCanFindViewsEnterTextAndPressButton() {
-        solo.enterText(solo.getView(R.id.editText1), "my login");
-        solo.enterText(solo.getView(R.id.editText2), "my password");
+        solo.enterText((EditText) solo.getView(R.id.editText1), "my login");
+        solo.enterText((EditText) solo.getView(R.id.editText2), "my password");
         solo.clickOnText("New Button");
     }
 
