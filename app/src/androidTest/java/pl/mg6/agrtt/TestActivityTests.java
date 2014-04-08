@@ -16,7 +16,7 @@ public class TestActivityTests extends ActivityInstrumentationTestCase2<TestActi
     public void testCanFindViewsEnterTextAndPressButton() {
         solo.enterText((EditText) solo.getView(R.id.editText1), "my login");
         solo.enterText((EditText) solo.getView(R.id.editText2), "my password");
-        solo.clickOnText("New Button");
+        solo.clickOnView(solo.getView(R.id.button));
     }
 
     private Solo solo;
