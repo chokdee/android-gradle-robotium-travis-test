@@ -1,7 +1,7 @@
 package pl.mg6.agrtt;
 
 import android.test.ActivityInstrumentationTestCase2;
-import android.view.KeyEvent;
+import android.view.WindowManager;
 import android.widget.EditText;
 
 import com.robotium.solo.Solo;
@@ -15,14 +15,10 @@ public class TestActivityTests extends ActivityInstrumentationTestCase2<TestActi
     }
 
     public void testCanFindViewsEnterTextAndPressButton() {
+        getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
         solo.enterText((EditText) solo.getView(R.id.editText1), "my login");
         solo.enterText((EditText) solo.getView(R.id.editText2), "my password");
-        try {
-            solo.clickOnView(solo.getView(R.id.button));
-        } catch (junit.framework.AssertionFailedError e) {
-            getActivity().dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_HOME));
-            solo.clickOnView(solo.getView(R.id.button));
-        }
+        solo.clickOnView(solo.getView(R.id.button));
     }
 
     private Solo solo;
