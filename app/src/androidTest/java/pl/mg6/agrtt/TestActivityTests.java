@@ -15,7 +15,12 @@ public class TestActivityTests extends ActivityInstrumentationTestCase2<TestActi
     }
 
     public void testCanFindViewsEnterTextAndPressButton() {
-        getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+            }
+        });
         solo.enterText((EditText) solo.getView(R.id.editText1), "my login");
         solo.enterText((EditText) solo.getView(R.id.editText2), "my password");
         solo.clickOnView(solo.getView(R.id.button));
