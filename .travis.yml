@@ -19,3 +19,6 @@ before_script:
 
 script:
   - ./gradlew connectedAndroidTest
+
+after_script:
+  - adb shell dumpsys window windows | grep -E 'mCurrentFocus|mFocusedApp'
