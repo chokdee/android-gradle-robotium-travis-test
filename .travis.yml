@@ -16,6 +16,7 @@ install:
 
 before_script:
   - wait_for_emulator
+  - adb shell dumpsys window windows | grep -E 'mCurrentFocus|mFocusedApp'
 
 script:
   - ./gradlew connectedAndroidTest
