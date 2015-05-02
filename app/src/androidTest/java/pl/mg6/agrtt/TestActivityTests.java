@@ -13,6 +13,7 @@ public class TestActivityTests extends ActivityInstrumentationTestCase2<TestActi
         solo.enterText(0, "my login");
         solo.enterText(1, "my password");
         solo.clickOnText("New Button");
+        
     }
 
     public void testCanFindViewsEnterTextAndPressButton() {
